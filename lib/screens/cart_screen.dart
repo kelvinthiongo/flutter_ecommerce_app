@@ -31,6 +31,7 @@ class _CartScreenState extends State<CartScreen> {
 
   void _checkOut(List<Product> cartItems) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
+    // await _prefs.clear();
     int _userId = _prefs.getInt('userId');
     if (_userId != null && _userId > 0) {
       Navigator.push(

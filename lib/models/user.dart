@@ -4,12 +4,12 @@ class User {
   String email;
   String password;
 
-  toJson(){
+  toJson() {
     return {
-      'id' : id.toString(),
-      'name' : name,
-      'email' : email,
-      'password' : password,
+      'id': id.toString(),
+      'name': name.toString(),
+      'email': email,
+      'password': password,
     };
   }
 }

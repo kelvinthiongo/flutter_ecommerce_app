@@ -13,6 +13,6 @@ class UserService {
   }
 
   login(User user) async {
-    return await _repository.httpPost(('login'), user.toJson());
+    return await _repository.httpPost('login', user.toJson());
   }
 }

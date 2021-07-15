@@ -21,14 +21,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _login(context, User user) async {
     var userService = UserService();
-    var registeredUser = userService.login(user);
-    var result = json.decode(registeredUser.body);
+    var registeredUser = await userService.login(user);
+    print(registeredUser);
 
+    var result = json.decode(registeredUser.body);
     if (result["result"] == true) {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
       _prefs.setInt('userId', result["user"]['id']);
       _prefs.setString('userName', result["user"]['name']);
-      _prefs.setString('userEmail', result["user"]['emal']);
+      _prefs.setString('userEmail', result["user"]['email']);
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -75,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   left: 48.0, top: 14.0, right: 48.0, bottom: 14.0),
               child: TextField(
                 controller: password,
+                obscureText: true,
                 decoration: InputDecoration(
                     hintText: 'Enter your password', labelText: '******'),
               ),
